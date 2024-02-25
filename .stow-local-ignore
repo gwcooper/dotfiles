@@ -1,7 +1,7 @@
-\.git
-\.gitignore
+.git
+.gitignore
 
 ^/README.*
 
-\scripts
-\.DS_Store
+scripts
+.DS_Store
