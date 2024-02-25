@@ -1,0 +1,5 @@
+require("core.edit_text")
+require("core.highlight_yank")
+require("core.options")
+require("core.resize_windows")
+require("core.window_nav")
