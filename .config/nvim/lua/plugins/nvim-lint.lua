@@ -5,7 +5,7 @@ return {
   opts = {
     linters_by_ft = {
       lua = { "luacheck" },
-      markdown = { "write_good" },
+      markdown = { "write_good", "markdownlint" },
       python = { "ruff" },
     },
   },
@@ -24,7 +24,7 @@ return {
         lint.try_lint()
       end,
     })
-    vim.keymap.set("n", "<leader>l", function()
+    vim.keymap.set("n", "<leader>lf", function()
       lint.try_lint()
     end, { desc = "Trigger linting for current file" })
   end,
