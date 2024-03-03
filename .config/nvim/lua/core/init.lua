@@ -1,4 +1,6 @@
+require("core.fleeting_note")
 require("core.edit_text")
+require("core.goto_config")
 require("core.highlight_yank")
 require("core.options")
 require("core.resize_windows")
