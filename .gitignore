@@ -1,2 +1,4 @@
 .DS_Store
 .config/raycast
+.config/nvim/lazy-lock.json
+.config/nvim/spell
