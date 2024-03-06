@@ -1,6 +1,7 @@
 return {
   -- python
   "pyright",
+  "ruff_lsp",
   -- terraform
   "terraformls",
   -- lua
