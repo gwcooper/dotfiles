@@ -6,7 +6,6 @@ return {
     linters_by_ft = {
       lua = { "luacheck" },
       markdown = { "write_good", "markdownlint" },
-      python = { "ruff" },
     },
   },
   config = function(_, opts)

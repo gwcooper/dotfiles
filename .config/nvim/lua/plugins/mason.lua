@@ -10,7 +10,6 @@ return {
     local linters = {
       -- python
       "mypy",
-      "ruff",
       -- terraform
       "tflint",
       -- lua
@@ -27,6 +26,8 @@ return {
       "stylua",
       -- shell
       "shfmt",
+      -- general
+      "codespell",
     }
 
     local debuggers = {

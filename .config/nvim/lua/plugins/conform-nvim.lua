@@ -18,9 +18,11 @@ return {
     -- Define your formatters
     formatters_by_ft = {
       lua = { "stylua" },
-      python = { "ruff_format" },
+      python = { "ruff_format", "ruff_fix" },
       sh = { "shfmt" },
       markdown = { "markdownlint" },
+      ["*"] = { "codespell" },
+      ["_"] = { "trim_whitespace" },
     },
     -- Set up format-on-save
     format_on_save = { timeout_ms = 500, lsp_fallback = true },
@@ -31,6 +33,9 @@ return {
       },
       lua = {
         prepend_args = { "indent_type", "Spaces", "indent_width", "2" },
+      },
+      ruff_fix = {
+        prepend_args = { "--select", "ALL" },
       },
     },
   },
