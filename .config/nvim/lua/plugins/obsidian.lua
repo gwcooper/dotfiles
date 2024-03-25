@@ -2,7 +2,10 @@ return {
   "epwalsh/obsidian.nvim",
   version = "*",
   lazy = true,
-  ft = "markdown",
+  event = {
+    "BufReadPre /Users/george/Library/Mobile Documents/iCloud~md~obsidian/Documents/Redux",
+    "BufNewFile /Users/george/Library/Mobile Documents/iCloud~md~obsidian/Documents/Redux",
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "hrsh7th/nvim-cmp",
@@ -11,14 +14,6 @@ return {
   },
   opts = {
     workspaces = {
-      {
-        name = "personal",
-        path = "/Users/george/Library/Mobile Documents/iCloud~md~obsidian/Documents/Personal",
-      },
-      {
-        name = "work",
-        path = "/Users/george/Library/Mobile Documents/iCloud~md~obsidian/Documents/Work Vault",
-      },
       {
         name = "redux",
         path = "/Users/george/Library/Mobile Documents/iCloud~md~obsidian/Documents/Redux",

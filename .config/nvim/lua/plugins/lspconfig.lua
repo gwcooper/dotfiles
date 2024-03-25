@@ -39,9 +39,10 @@ function M.common_capabilities()
   return capabilities
 end
 
-M.toggle_inlay_hints = function()
-  local bufnr = vim.api.nvim_get_current_buf()
-  vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
+function M.toggle_inlay_hints(bufnr)
+  bufnr = bufnr or 0
+  vim.b[bufnr].inlay_hints_enabled = not vim.b[bufnr].inlay_hints_enabled
+  vim.lsp.inlay_hint(bufnr, vim.b[bufnr].inlay_hints_enabled)
 end
 
 function M.config()
@@ -50,18 +51,11 @@ function M.config()
     ["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     ["<leader>li"] = { "<cmd>LspInfo<cr>", "Info" },
     ["<leader>lj"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
-    ["<leader>lh"] = { "<cmd>lua require('lua.plugins.lspconfig').toggle_inlay_hints()<cr>", "Hints" },
+    ["<leader>lh"] = { "<cmd>lua require('plugins.lspconfig').toggle_inlay_hints()<cr>", "Hints" },
     ["<leader>lk"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
     ["<leader>ll"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     ["<leader>lq"] = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
     ["<leader>lr"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-  })
-
-  wk.register({
-    ["<leader>la"] = {
-      name = "LSP",
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "v" },
-    },
   })
 
   local lspconfig = require("lspconfig")
@@ -105,11 +99,12 @@ function M.config()
 
   for _, server in pairs(servers) do
     local opts = {
+      inlay_hints = { enabled = true },
       on_attach = M.on_attach,
       capabilities = M.common_capabilities(),
     }
 
-    local require_ok, settings = pcall(require, "lua.lspsettings." .. server)
+    local require_ok, settings = pcall(require, "lua.lsp_settings." .. server)
     if require_ok then
       opts = vim.tbl_deep_extend("force", settings, opts)
     end
