@@ -12,7 +12,7 @@ fi
 export PATH="$HOME/.bin:$PATH"
 
 # Pyenv & pyenv-virtualenv initialisations
-# rosetta terminal setup
+# Rosetta terminal setup
 if [ $(arch) = "i386" ]; then
     alias brew86="/usr/local/bin/brew"
     alias pyenv86="arch -x86_64 pyenv"
@@ -30,6 +30,10 @@ export PATH=$PATH:$(go env GOPATH)/bin
 
 #Elixir
 export PATH="$HOME/.mix/escripts:$PATH"
+
+#asdf
+source "$(brew --prefix asdf)/libexec/asdf.sh"
+source "$(brew --prefix asdf)/share/zsh/site-functions"
 
 # --------------------------------------
 # ZShell Opts
