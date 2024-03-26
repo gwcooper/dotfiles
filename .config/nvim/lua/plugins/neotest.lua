@@ -22,5 +22,6 @@ return {
     { "<leader>dta", ":lua require'neotest'.run.attach()<cr>", desc = "attach test" },
     { "<leader>dtf", ":lua require'neotest'.run.run(vim.fn.expand('%'))<cr>", desc = "test file" },
     { "<leader>dts", ":lua require'neotest'.summary.toggle()<cr>", desc = "test summary" },
+    { "<leader>dtp", ":lua require'neotest'.run.run({suite = true})<cr>", desc = "run all tests" },
   },
 }
