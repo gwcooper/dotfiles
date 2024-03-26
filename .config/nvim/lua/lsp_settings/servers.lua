@@ -1,6 +1,6 @@
 return {
   -- python
-  "pyright",
+  "basedpyright",
   "ruff_lsp",
   -- terraform
   "terraformls",
