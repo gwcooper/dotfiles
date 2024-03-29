@@ -33,6 +33,8 @@ return {
     local debuggers = {
       --python
       "debugpy",
+      --rust and others
+      "codelldb",
     }
 
     -- install language servers

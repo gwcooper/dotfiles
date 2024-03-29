@@ -13,6 +13,7 @@ return {
         require("neotest-python")({
           dap = { JustMyCode = false },
         }),
+        require("rustaceanvim.neotest"),
       },
     })
   end,

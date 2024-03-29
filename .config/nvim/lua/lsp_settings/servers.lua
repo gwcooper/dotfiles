@@ -14,4 +14,6 @@ return {
   "bashls",
   -- markdown
   "marksman",
+  -- rust
+  "rust_analyzer",
 }

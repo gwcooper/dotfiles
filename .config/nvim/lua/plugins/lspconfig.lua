@@ -113,7 +113,10 @@ function M.config()
       require("neodev").setup({})
     end
 
-    lspconfig[server].setup(opts)
+    -- conflicts with rustaceanvim
+    if server ~= "rust_analyzer" then
+      lspconfig[server].setup(opts)
+    end
   end
 end
 
