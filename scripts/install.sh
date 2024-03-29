@@ -33,7 +33,8 @@ fi
 
 # run gnu stow
 if command -v stow >/dev/null; then
-  echo '🐃  Stowing dotfiles' && stow "~/dotfiles"
+  echo '🐃  Stowing dotfiles'
+  cd .. && stow .
 fi
 
 echo ""
