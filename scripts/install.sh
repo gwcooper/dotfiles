@@ -26,12 +26,15 @@ command -v brew >/dev/null 2>&1 ||
   (echo '🍺  Installing Homebrew' && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
 
 # Install brew packages and casks
-command -v brew >/dev/null 2>&1 ||
-  (echo '🍺  Installing packages and casks' && /bin/bash -c "./install_brew_packages.sh $MACHINE_TYPE")
+if command -v brew &>/dev/null; then
+  echo '🍺  Installing packages and casks'
+  /bin/bash -c "./install_brew_packages.sh $MACHINE_TYPE"
+fi
 
 # run gnu stow
-command -v stow >/dev/null 2>&1 ||
-  (echo '🐃  Stowing dotfiles' && stow "~/dotfiles")
+if command -v stow >/dev/null; then
+  echo '🐃  Stowing dotfiles' && stow "~/dotfiles"
+fi
 
 echo ""
 echo "Done."
