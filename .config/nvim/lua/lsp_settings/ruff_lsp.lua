@@ -28,7 +28,7 @@ return {
   end,
   init_options = {
     settings = {
-      args = { "--select", "ALL", "--ignore", "D100", "--ignore", "ANN" },
+      args = { "--select", "ALL", "--ignore", "D100", "--ignore", "D103", "--ignore", "ANN" },
     },
   },
 }
