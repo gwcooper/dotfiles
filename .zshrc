@@ -159,3 +159,5 @@ function mkd() {
 # Starship
 # --------------------------------------
 eval "$(starship init zsh)"
+
+export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin
