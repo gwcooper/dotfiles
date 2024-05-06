@@ -1,4 +1,6 @@
 .DS_Store
+.config/bat/themes
 .config/raycast
 .config/nvim/lazy-lock.json
 .config/nvim/spell
+fzf-git.sh
