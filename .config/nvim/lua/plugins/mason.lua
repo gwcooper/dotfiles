@@ -8,10 +8,6 @@ return {
 
     local servers = require("lsp_settings.servers")
     local linters = {
-      -- python
-      "mypy",
-      -- terraform
-      "tflint",
       -- lua
       "luacheck",
       --markdown
