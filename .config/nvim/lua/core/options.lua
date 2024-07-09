@@ -1,13 +1,16 @@
 local opt = vim.opt
 
+vim.g.have_nerd_font = true
+
 -- nvim-tree config - disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- search
-opt.hlsearch = false
+opt.hlsearch = true
 opt.ignorecase = true
 opt.smartcase = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- cursor line
 opt.cursorline = false
@@ -16,28 +19,31 @@ opt.cursorline = false
 opt.termguicolors = true
 opt.scrolloff = 8
 opt.background = "dark"
+opt.showmode = false
 opt.signcolumn = "yes"
 opt.number = true
 opt.relativenumber = true
+opt.inccommand = 'split'
 
 -- editor behaviour
 opt.backspace = "indent,eol,start"
-opt.clipboard:append("unnamedplus")
-opt.breakindent = true
+opt.clipboard = "unnamedplus"
 opt.undofile = true
 opt.conceallevel = 1
+opt.mouse = 'a'
+opt.breakindent = true
 
--- Fold
+-- fold
 opt.foldenable = false
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 
--- Spell
+-- spelling
 opt.spell = true
 opt.spelllang = "en"
 opt.spellsuggest = "best,8"
 
--- window splits
+-- splits
 opt.splitright = true
 opt.splitbelow = true
 
