@@ -1,3 +1,27 @@
+-- Go to Config
+vim.api.nvim_create_user_command("Config", function()
+  vim.cmd([[cd ~/.config/nvim]])
+end, {})
+
+-- Highlight on Yank
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = "*",
+})
+
+-- Automated window resizing
+vim.api.nvim_create_autocmd("VimResized", {
+  group = vim.api.nvim_create_augroup("WinResize", { clear = true }),
+  pattern = "*",
+  command = "wincmd =",
+  desc = "Auto-resize windows on terminal buffer resize.",
+})
+
 --- Move to a window (one of hjkl) or create a split if a window does not exist in the direction
 --- Lua translation of:
 --- https://www.reddit.com/r/vim/comments/166a3ij/comment/jyivcnl/?utm_source=share&utm_medium=web2x&context=3
@@ -7,7 +31,7 @@
 local function smarter_win_nav(key)
   local fn = vim.fn
   local curr_win = fn.winnr()
-  vim.cmd("wincmd " .. key)      --> attempt to move
+  vim.cmd("wincmd " .. key) --> attempt to move
 
   if curr_win == fn.winnr() then --> didn't move, so create a split
     if key == "h" or key == "l" then
@@ -67,3 +91,14 @@ for _, v in ipairs(key_opt) do
   -- Set keybinding
   vim.keymap.set(v[1], v[2], v[3], opts)
 end
+
+-- Spellcheck and wrap per file type
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = vim.api.nvim_create_augroup("edit_text", { clear = true }),
+  pattern = { "gitcommit", "markdown", "txt" },
+  desc = "Enable spell checking and text wrapping for certain filetypes",
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+  end,
+})
