@@ -75,7 +75,7 @@ eval "$(fzf --zsh)"
 
 # --- setup fzf theme ---
 fg="#CBE0F0"
-bg="#011628"
+bg="-1" # "#011628"
 bg_highlight="#143652"
 purple="#B388FF"
 blue="#06BCE4"
@@ -115,6 +115,12 @@ _fzf_comprun() {
     *)		  fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
   esac
 }
+
+# --------------------------------------
+# Rye
+# --------------------------------------
+
+source "$HOME/.rye/env"
 
 # --------------------------------------
 # Zoxide
