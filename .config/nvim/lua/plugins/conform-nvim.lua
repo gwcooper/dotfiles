@@ -35,7 +35,7 @@ return {
         prepend_args = { "indent_type", "Spaces", "indent_width", "2" },
       },
       ruff_fix = {
-        prepend_args = { "--select", "ALL" },
+        prepend_args = { "check", "--select", "ALL" },
       },
     },
   },

@@ -35,18 +35,6 @@ return {
       "theHamsta/nvim-dap-virtual-text",
       opts = {},
     },
-
-    -- which key integration
-    {
-      "folke/which-key.nvim",
-      optional = true,
-      opts = {
-        defaults = {
-          ["<leader>d"] = { name = "+debug" },
-        },
-      },
-    },
-
     -- mason.nvim integration
     {
       "jay-babu/mason-nvim-dap.nvim",
@@ -78,6 +66,7 @@ return {
       config = function()
         local path = require("mason-registry").get_package("debugpy"):get_install_path()
         require("dap-python").setup(path .. "/venv/bin/python")
+        require("dap").configurations.python[1].justMyCode = false
       end,
     },
   },
@@ -175,11 +164,11 @@ return {
   -- stylua: ignore end
   config = function()
     local icons = {
-      Stopped             = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
-      Breakpoint          = " ",
+      Stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
+      Breakpoint = " ",
       BreakpointCondition = " ",
-      BreakpointRejected  = { " ", "DiagnosticError" },
-      LogPoint            = ".>",
+      BreakpointRejected = { " ", "DiagnosticError" },
+      LogPoint = ".>",
     }
     vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
