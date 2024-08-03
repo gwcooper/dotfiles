@@ -23,6 +23,10 @@ local M = {
       event = "InsertEnter",
     },
     {
+      "hrsh7th/cmp-calc",
+      event = "InsertEnter",
+    },
+    {
       "saadparwaiz1/cmp_luasnip",
       event = "InsertEnter",
     },
@@ -83,10 +87,8 @@ function M.config()
           luasnip.expand_or_jump()
         elseif check_backspace() then
           fallback()
-          -- require("neotab").tabout()
         else
           fallback()
-          -- require("neotab").tabout()
         end
       end, {
         "i",
