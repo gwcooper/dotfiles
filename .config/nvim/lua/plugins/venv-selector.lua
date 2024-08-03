@@ -6,12 +6,12 @@ return {
     -- name = "venv",
     -- auto_refresh = false
   },
-  event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
   branch = "regexp",
+  ft = "python",
   keys = {
     -- Keymap to open VenvSelector to pick a venv.
-    { "<leader>vs", "<cmd>VenvSelect<cr>" },
+    { "<leader>vs", "<cmd>VenvSelect<cr>", desc = "Select python virtualenv" },
     -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-    { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
+    { "<leader>vc", "<cmd>VenvSelectCached<cr>", desc = "Select cached python virtualenv selection" },
   },
 }

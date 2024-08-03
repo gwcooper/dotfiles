@@ -40,29 +40,26 @@ return {
 
         -- Actions
         local wk = require("which-key")
-        wk.register({
-          h = {
-            name = "+hunks",
-            b = {
-              function()
-                gitsigns.blame_line({ full = true })
-              end,
-              "Blame line",
-            },
-            d = { gitsigns.diffthis, "Diff this" },
-            r = { gitsigns.reset_hunk, "Reset hunk" },
-            R = { gitsigns.reset_buffer, "Reset buffer" },
-            s = { gitsigns.stage_hunk, "Stage hunk" },
-            S = { gitsigns.stage_buffer, "Stage buffer" },
-            p = { gitsigns.preview_hunk, "Preview hunk" },
-            u = { gitsigns.undo_stage_hunk, "Undo stage hunk" },
+        wk.add({
+          { "<leader>h", group = "hunks" },
+          {
+            "<leader>hb",
+            function()
+              gitsigns.blame_line({ full = true })
+            end,
+            desc = "Blame line",
           },
-          t = {
-            name = "+toggle",
-            b = { gitsigns.toggle_current_line_blame, "Current line blame" },
-            d = { gitsigns.toggle_deleted, "deleted" },
-          },
-        }, { prefix = "<leader>" })
+          { "<leader>hd", gitsigns.diffthis, desc = "Diff this" },
+          { "<leader>hr", gitsigns.reset_hunk, desc = "Reset hunk" },
+          { "<leader>hR", gitsigns.reset_buffer, desc = "Reset buffer" },
+          { "<leader>hs", gitsigns.stage_hunk, desc = "Stage hunk" },
+          { "<leader>hS", gitsigns.stage_buffer, desc = "Stage buffer" },
+          { "<leader>hp", gitsigns.preview_hunk, desc = "Preview hunk" },
+          { "<leader>hu", gitsigns.undo_stage_hunk, desc = "Undo stage hunk" },
+          { "<leader>t", group = "toggle" },
+          { "<leader>tb", gitsigns.toggle_current_line_blame, desc = "Current line blame" },
+          { "<leader>td", gitsigns.toggle_deleted, desc = "deleted" },
+        })
       end,
     },
   },

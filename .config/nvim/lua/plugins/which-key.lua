@@ -1,28 +1,33 @@
+local icons = require("core.icons")
 return {
   "folke/which-key.nvim",
+  dependencies = {
+    { "echasnovski/mini.icons", version = false },
+  },
   event = "VeryLazy",
   init = function()
     vim.o.timeout = true
     vim.o.timeoutlen = 300
   end,
   opts = {
-    plugins = { spelling = true },
     defaults = {
-      ["]"] = { name = "+next" },
-      ["["] = { name = "+prev" },
-      ["g"] = { name = "+goto" },
-      ["<leader>g"] = { name = "+preview" },
-      ["<leader>l"] = { name = "+code" },
-      ["<leader>f"] = { name = "+file/find" },
-      ["<leader>s"] = { name = "+search" },
-      ["<leader>x"] = { name = "+diagnostics/quickfix" },
-      ["<leader>n"] = { name = "+neotest" },
-      ["<leader>u"] = { name = "+undo" },
+      { "]", group = "next" },
+      { "[", group = "prev" },
+      { "g", group = "goto" },
+      { "<leader>d", group = "debug" },
+      { "<leader>g", group = "preview", icon = icons.ui.FindFile },
+      { "<leader>l", group = "code" },
+      { "<leader>f", group = "file/find" },
+      { "<leader>s", group = "search" },
+      { "<leader>x", group = "diagnostics/quickfix" },
+      { "<leader>n", group = "neotest" },
+      { "<leader>u", group = "undo", icons.ui.ChevronShortLeft },
+      { "<leader>v", group = "virtualenvs", icon = "󰌠" },
     },
   },
   config = function(_, opts)
     local wk = require("which-key")
     wk.setup(opts)
-    wk.register(opts.defaults)
+    wk.add(opts.defaults)
   end,
 }
