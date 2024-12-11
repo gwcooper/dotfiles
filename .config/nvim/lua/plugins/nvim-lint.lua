@@ -15,6 +15,7 @@ return {
 
     lint.linters.luacheck.args = vim.list_extend(vim.deepcopy(lint.linters.luacheck.args), {
       "--globals=vim",
+      "--globals=Snacks",
     })
 
     vim.api.nvim_create_autocmd({ "bufEnter", "BufWritePost", "InsertLeave" }, {
