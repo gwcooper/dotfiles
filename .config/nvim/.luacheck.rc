@@ -1,0 +1,3 @@
+std = {
+globals = {"vim", "Snacks", "snacks.Config"}
+}
