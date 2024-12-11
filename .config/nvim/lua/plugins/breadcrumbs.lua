@@ -4,7 +4,7 @@ local M = {
 }
 
 function M.config()
-  local icons = require("core.icons")
+  local icons = require("mini.icons")
   require("nvim-navic").setup({
     icons = icons.kind,
     highlight = true,
@@ -12,7 +12,7 @@ function M.config()
       auto_attach = true,
     },
     click = true,
-    separator = " " .. icons.ui.ChevronRight .. " ",
+    separator = " " .. "" .. " ",
     depth_limit = 0,
     depth_limit_indicator = "..",
   })

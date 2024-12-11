@@ -41,7 +41,7 @@ return {
         -- Actions
         local wk = require("which-key")
         wk.add({
-          { "<leader>h", group = "hunks" },
+          { "<leader>h", group = "hunks", icon = ""},
           {
             "<leader>hb",
             function()

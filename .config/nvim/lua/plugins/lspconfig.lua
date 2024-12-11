@@ -3,7 +3,7 @@ local M = {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     {
-      "folke/neodev.nvim",
+      "folke/lazydev.nvim",
     },
   },
 }
@@ -56,7 +56,6 @@ function M.config()
   })
 
   local lspconfig = require("lspconfig")
-  local icons = require("core.icons")
 
   local servers = require("lsp_settings.servers")
 
@@ -64,10 +63,10 @@ function M.config()
     signs = {
       active = true,
       values = {
-        { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+        { name = "DiagnosticSignError", text = "" },
+        { name = "DiagnosticSignWarn", text = "" },
+        { name = "DiagnosticSignHint", text = "󰌶" },
+        { name = "DiagnosticSignInfo", text = "" },
       },
     },
     virtual_text = false,
@@ -107,7 +106,7 @@ function M.config()
     end
 
     if server == "lua_ls" then
-      require("neodev").setup({})
+      require("lazydev").setup({})
     end
 
     -- conflicts with rustaceanvim
