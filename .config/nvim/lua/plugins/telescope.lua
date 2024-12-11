@@ -1,6 +1,7 @@
 return {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
+  lazy = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     {
@@ -24,7 +25,7 @@ return {
   config = function(_, opts)
     require("telescope").setup(opts)
     require("telescope").load_extension("fzf")
-    require("telescope").load_extension("notify")
+   -- require("telescope").load_extension("notify")
   end,
   -- stylua: ignore
   keys = {
