@@ -1,13 +1,17 @@
 return {
   -- python
   "basedpyright",
-  "ruff_lsp",
+  "ruff",
   -- lua
   "lua_ls",
   -- bash
   "bashls",
   -- markdown
   "marksman",
-  -- rust
-  "rust_analyzer",
+  -- typst
+  "tinymist",
+  -- toml
+  "taplo",
+  --wgsl
+  "wgsl_analyzer",
 }
