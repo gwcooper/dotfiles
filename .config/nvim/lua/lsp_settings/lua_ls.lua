@@ -5,7 +5,7 @@ return {
         enable = false, -- let the linter do this
       },
       diagnostics = {
-        global = { "vim" },
+        global = { "vim", "Snacks", "snacks.Config" },
       },
     },
   },
