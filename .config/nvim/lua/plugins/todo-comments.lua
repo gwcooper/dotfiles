@@ -2,6 +2,7 @@ return {
   "folke/todo-comments.nvim",
   cmd = { "TodoTrouble", "TodoTelescope" },
   config = true,
+  event = "VimEnter",
   -- stylua: ignore
   keys = {
     { "]t",         function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
