@@ -1,4 +1,3 @@
-local icons = require("core.icons")
 return {
   "folke/which-key.nvim",
   dependencies = {
@@ -11,18 +10,20 @@ return {
   end,
   opts = {
     defaults = {
-      { "]", group = "next" },
-      { "[", group = "prev" },
-      { "g", group = "goto" },
-      { "<leader>d", group = "debug" },
-      { "<leader>g", group = "preview", icon = icons.ui.FindFile },
-      { "<leader>l", group = "code" },
-      { "<leader>f", group = "file/find" },
-      { "<leader>s", group = "search" },
-      { "<leader>x", group = "diagnostics/quickfix" },
-      { "<leader>n", group = "neotest" },
-      { "<leader>u", group = "undo", icons.ui.ChevronShortLeft },
-      { "<leader>v", group = "virtualenvs", icon = "󰌠" },
+      -- { "]", group = "next" },
+      -- { "[", group = "prev" },
+      -- { "g", group = "goto" },
+      -- { mode = { "n" }, "<leader>b", group = "pencil"}, 
+      -- { "<leader>d", group = "debug" },
+      -- { "<leader>g", group = "preview"}, 
+      -- { "<leader>l", group = "code" },
+      -- { "<leader>f", group = "file/find" },
+      -- { "<leader>s", group = "search" },
+      -- { "<leader>t", group = "toggle" },
+      -- { "<leader>x", group = "diagnostics/quickfix" },
+      -- { "<leader>n", group = "neotest" },
+      -- { "<leader>u", group = "undo"},
+      -- { "<leader>v", group = "virtualenvs", icon = "󰌠" },
     },
   },
   config = function(_, opts)
