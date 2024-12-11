@@ -95,10 +95,28 @@ end
 -- Spellcheck and wrap per file type
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = vim.api.nvim_create_augroup("edit_text", { clear = true }),
-  pattern = { "gitcommit", "markdown", "txt" },
+  pattern = { "gitcommit", "markdown", "txt", "typst", "typ" },
   desc = "Enable spell checking and text wrapping for certain filetypes",
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.wgsl",
+  callback = function()
+    vim.bo.filetype = "wgsl"
+  end,
+})
+
+vim.api.nvim_create_autocmd({
+  "BufNewFile",
+  "BufRead",
+}, {
+  pattern = "*.typ",
+  callback = function()
+    local bufnr = vim.api.nvim_get_current_buf()
+    vim.api.nvim_set_option_value("filetype", "typst", { buf = bufnr })
   end,
 })
