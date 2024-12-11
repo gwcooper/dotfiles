@@ -17,7 +17,7 @@ config.window_background_image_hsb = {
   brightness = 0.05,
   saturation = 0.2,
 }
-config.window_background_opacity = 0.6
+config.window_background_opacity = 0.8
 config.macos_window_background_blur = 20
 
 config.inactive_pane_hsb = {
@@ -31,6 +31,7 @@ config.window_padding = {
   top = 20,
   bottom = 10,
 }
+config.max_fps = 120
 
 config.scrollback_lines = 3000
 config.default_workspace = "main"
