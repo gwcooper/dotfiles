@@ -10,6 +10,7 @@ else
 fi
 
 export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Pyenv & pyenv-virtualenv initialisations
 # Rosetta terminal setup
@@ -117,12 +118,6 @@ _fzf_comprun() {
 }
 
 # --------------------------------------
-# Rye
-# --------------------------------------
-
-source "$HOME/.rye/env"
-
-# --------------------------------------
 # Zoxide
 # --------------------------------------
 
@@ -168,3 +163,5 @@ eval "$(starship init zsh)"
 
 export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin
 
+
+. "$HOME/.cargo/env"
