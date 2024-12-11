@@ -8,6 +8,7 @@ local M = {
     },
     {
       "hrsh7th/cmp-emoji",
+      ft = "markdown",
       event = "InsertEnter",
     },
     {
@@ -33,8 +34,18 @@ local M = {
     {
       "L3MON4D3/LuaSnip",
       event = "InsertEnter",
+      build = "make install_jsregexp",
       dependencies = {
         "rafamadriz/friendly-snippets",
+      },
+      {
+        "Saecki/crates.nvim",
+        event = { "BufRead Cargo.toml" },
+        opts = {
+          completion = {
+            cmp = { enabled = true },
+          },
+        },
       },
     },
     {
@@ -55,7 +66,6 @@ function M.config()
     return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
   end
 
-  local icons = require("core.icons")
 
   cmp.setup({
     snippet = {
@@ -77,7 +87,7 @@ function M.config()
       }),
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
-      ["<CR>"] = cmp.mapping.confirm({ select = true }),
+      ["<CR>"] = cmp.mapping.confirm({ select = false }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -111,7 +121,6 @@ function M.config()
       expandable_indicator = true,
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
-        vim_item.kind = icons.kind[vim_item.kind]
         vim_item.menu = ({
           nvim_lsp = "",
           nvim_lua = "",
@@ -122,7 +131,6 @@ function M.config()
         })[entry.source.name]
 
         if entry.source.name == "emoji" then
-          vim_item.kind = icons.misc.Smiley
           vim_item.kind_hl_group = "CmpItemKindEmoji"
         end
 
