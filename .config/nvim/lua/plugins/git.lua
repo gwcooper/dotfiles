@@ -41,24 +41,17 @@ return {
         -- Actions
         local wk = require("which-key")
         wk.add({
-          { "<leader>h", group = "hunks", icon = ""},
-          {
-            "<leader>hb",
-            function()
-              gitsigns.blame_line({ full = true })
-            end,
-            desc = "Blame line",
-          },
-          { "<leader>hd", gitsigns.diffthis, desc = "Diff this" },
-          { "<leader>hr", gitsigns.reset_hunk, desc = "Reset hunk" },
-          { "<leader>hR", gitsigns.reset_buffer, desc = "Reset buffer" },
-          { "<leader>hs", gitsigns.stage_hunk, desc = "Stage hunk" },
-          { "<leader>hS", gitsigns.stage_buffer, desc = "Stage buffer" },
-          { "<leader>hp", gitsigns.preview_hunk, desc = "Preview hunk" },
-          { "<leader>hu", gitsigns.undo_stage_hunk, desc = "Undo stage hunk" },
-          { "<leader>t", group = "toggle" },
-          { "<leader>tb", gitsigns.toggle_current_line_blame, desc = "Current line blame" },
-          { "<leader>td", gitsigns.toggle_deleted, desc = "deleted" },
+          { "<leader>g", group = "git", icon = "" },
+          { "<leader>gd", gitsigns.diffthis, desc = "Diff this" },
+          { "<leader>gr", gitsigns.reset_hunk, desc = "Reset hunk" },
+          { "<leader>gR", gitsigns.reset_buffer, desc = "Reset buffer" },
+          { "<leader>gs", gitsigns.stage_hunk, desc = "Stage hunk" },
+          { "<leader>gS", gitsigns.stage_buffer, desc = "Stage buffer" },
+          { "<leader>gp", gitsigns.preview_hunk, desc = "Preview hunk" },
+          { "<leader>gu", gitsigns.undo_stage_hunk, desc = "Undo stage hunk" },
+          { "<leader>t", group = "toggles" },
+          { "<leader>tb", gitsigns.toggle_current_line_blame, desc = "Current Line Blame" },
+          { "<leader>td", gitsigns.toggle_deleted, desc = "Deleted" },
         })
       end,
     },
