@@ -31,12 +31,14 @@ local M = {
       "saadparwaiz1/cmp_luasnip",
       event = "InsertEnter",
     },
+    { "honza/vim-snippets", event = "InsertEnter" },
     {
       "L3MON4D3/LuaSnip",
       event = "InsertEnter",
       build = "make install_jsregexp",
       dependencies = {
         "rafamadriz/friendly-snippets",
+        "honza/vim-snippets",
       },
       {
         "Saecki/crates.nvim",
@@ -57,15 +59,47 @@ local M = {
 function M.config()
   local cmp = require("cmp")
   local luasnip = require("luasnip")
+
   require("luasnip/loaders/from_vscode").lazy_load()
+  luasnip.filetype_extend("all", { "_" })
 
   vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
+  vim.api.nvim_set_hl(0, "CmpMenuGrayScale", { fg = "#656869" })
 
   local check_backspace = function()
     local col = vim.fn.col(".") - 1
     return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
   end
 
+  local cmp_kinds = {
+    -- if you change or add symbol here
+    -- replace corresponding line in readme
+    Text = "󰉿", -- "",
+    Method = "󰆧",
+    Function = "󰊕",
+    Constructor = "",
+    Field = "",
+    Variable = "󰀫", -- "",
+    Class = "󰠱",
+    Interface = "",
+    Module = "", -- "",
+    Property = "󰜢",
+    Unit = "",
+    Value = "󰎠",
+    Enum = "",
+    Keyword = "󰌋", -- "",
+    Snippet = "",
+    Color = "󰏘",
+    File = "󰈙",
+    Reference = "󰈇",
+    Folder = "󰉋",
+    EnumMember = "",
+    Constant = "󰏿",
+    Struct = "󰙅",
+    Event = "",
+    Operator = "",
+    TypeParameter = "",
+  }
 
   cmp.setup({
     snippet = {
@@ -121,14 +155,16 @@ function M.config()
       expandable_indicator = true,
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
-        vim_item.menu = ({
-          nvim_lsp = "",
-          nvim_lua = "",
-          luasnip = "",
-          buffer = "",
-          path = "",
-          emoji = "",
-        })[entry.source.name]
+        vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
+        vim_item.menu = "    " .. (vim_item.kind or "")
+
+        vim_item.menu_hl_group = "CmpMenuGrayScale"
+        vim_item.kind = (cmp_kinds[vim_item.kind] .. " " or "")
+
+        if entry.source.name == "calc" then
+          vim_item.kind = "󰃬 "
+          vim_item.menu = "    (calc)"
+        end
 
         if entry.source.name == "emoji" then
           vim_item.kind_hl_group = "CmpItemKindEmoji"
@@ -138,17 +174,20 @@ function M.config()
       end,
     },
     sources = {
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = "nvim_lua" },
-      { name = "buffer" },
-      { name = "path" },
-      { name = "calc" },
-      { name = "emoji" },
+      { name = "nvim_lsp", max_item_count = 5 },
+      { name = "luasnip", max_item_count = 3 },
+      { name = "nvim_lua", max_item_count = 3 },
+      { name = "buffer", max_item_count = 5 },
+      { name = "path", max_item_count = 3 },
+      { name = "calc", max_item_count = 2 },
+      { name = "emoji", max_item_count = 2 },
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
+    },
+    completion = {
+      keyword_length = 2,
     },
     window = {
       completion = {
