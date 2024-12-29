@@ -5,6 +5,16 @@ local M = {
     {
       "folke/lazydev.nvim",
     },
+    {
+      "j-hui/fidget.nvim",
+      opts = {
+        notification = {
+          window = {
+            winblend = 0,
+          },
+        },
+      },
+    },
   },
 }
 
@@ -12,12 +22,18 @@ local function lsp_keymaps(bufnr)
   local map = function(keys, func, desc)
     vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
   end
-  map("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration")
-  map("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition")
-  map("K", "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover")
-  map("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation")
-  map("gr", "<cmd>lua vim.lsp.buf.references()<CR>", "References")
-  map("gl", "<cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostic: open float")
+  -- map("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration")
+  -- map("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition")
+  -- map("K", "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover")
+  -- map("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation")
+  -- map("gr", "<cmd>lua vim.lsp.buf.references()<CR>", "References")
+  -- map("gl", "<cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostic: open float")
+  map("gD", vim.lsp.buf.declaration, "Declaration")
+  map("gd", vim.lsp.buf.definition, "Definition")
+  map("K", vim.lsp.buf.hover, "Hover")
+  map("gI", vim.lsp.buf.implementation, "Implementation")
+  map("gr", vim.lsp.buf.references, "References")
+  map("gl", vim.diagnostic.open_float, "Diagnostic: open float")
 end
 
 M.on_attach = function(client, bufnr)
@@ -33,6 +49,10 @@ M.on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>th", function()
       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end, { desc = "Inlay [H]ints" })
+  end
+
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, bufnr)
   end
 end
 
@@ -109,7 +129,7 @@ function M.config()
       require("lazydev").setup({})
     end
 
-    -- conflicts with rustaceanvim
+    -- conflicts with rustaceavim
     if server ~= "rust_analyzer" then
       lspconfig[server].setup(opts)
     end
