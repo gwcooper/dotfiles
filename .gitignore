@@ -6,4 +6,5 @@
 .config/Autodesk
 .config/ghossty
 .config/uv
+.config/bashtop
 fzf-git.sh
