@@ -1,5 +1,5 @@
 .DS_Store
-.config/bat/themes
+.config/bat
 .config/raycast
 .config/nvim/lazy-lock.json
 .config/nvim/spell
@@ -7,4 +7,5 @@
 .config/ghossty
 .config/uv
 .config/bashtop
+.config/fish
 fzf-git.sh
