@@ -3,4 +3,7 @@
 .config/raycast
 .config/nvim/lazy-lock.json
 .config/nvim/spell
+.config/Autodesk
+.config/ghossty
+.config/uv
 fzf-git.sh
