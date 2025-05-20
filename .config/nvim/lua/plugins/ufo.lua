@@ -75,10 +75,6 @@ function M.config()
     provider_selector = function(bufnr, filetype, buftype)
       -- if you prefer treesitter provider rather than lsp,
       return ftMap[filetype] or { "treesitter", "indent" }
-      -- return ftMap[filetype]
-      -- return { "lsp", "indent" }
-
-      -- refer to ./doc/example.lua for detail
     end,
 
     preview = {
@@ -100,7 +96,7 @@ function M.config()
   vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
   vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
   vim.keymap.set("n", "zm", require("ufo").closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
-  vim.keymap.set("n", "<leader>p", require("ufo").peekFoldedLinesUnderCursor, { desc = "peek fold" })
+  vim.keymap.set("n", "<leader>p", require("ufo").peekFoldedLinesUnderCursor, { desc = "Peek fold" })
 end
 
 return M

@@ -18,6 +18,7 @@ return {
     })
   end,
   keys = {
+    -- { "<leader>n", group = "Neotest" },
     { "<leader>nt", ":lua require'neotest'.run.run({strategy = 'dap'})<cr>", desc = "test" },
     { "<leader>ns", ":lua require'neotest'.run.stop()<cr>", desc = "stop test" },
     { "<leader>na", ":lua require'neotest'.run.attach()<cr>", desc = "attach test" },

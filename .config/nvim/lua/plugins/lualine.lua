@@ -1,11 +1,10 @@
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    "nvim-tree/nvim-web-devicons",
     "meuter/lualine-so-fancy.nvim",
   },
-  opts = {
-    options = {
+  config = function(_, opts)
+    opts.options = {
       theme = "catppuccin",
       component_separators = { left = "│", right = "│" },
       section_separators = { left = "", right = "" },
@@ -13,8 +12,21 @@ return {
       refresh = {
         statusline = 100,
       },
-    },
-    sections = {
+    }
+
+    local function get_venv(variable)
+      local venv = os.getenv(variable)
+      if venv ~= nil and string.find(venv, "/") then
+        local orig_venv = venv
+        for w in orig_venv:gmatch("([^/]+)") do
+          venv = w
+        end
+        venv = string.format("%s", venv)
+      end
+      return venv
+    end
+
+    opts.sections = {
       lualine_a = {
         { "fancy_mode", width = 3 },
       },
@@ -31,12 +43,21 @@ return {
         { "fancy_searchcount" },
         { "fancy_location" },
       },
-      lualine_y = {
-        { "fancy_filetype", ts_icon = "" },
-      },
+      lualine_y = { { "fancy_filetype", ts_icon = "" } },
       lualine_z = {
         { "fancy_lsp_servers" },
       },
-    },
-  },
+    }
+
+    table.insert(opts.sections.lualine_y, 1, {
+      function()
+        local venv = get_venv("VIRTUAL_ENV") or "NO ENV"
+        return " " .. venv
+      end,
+      cond = function()
+        return vim.bo.filetype == "python"
+      end,
+    })
+    require("lualine").setup(opts)
+  end,
 }

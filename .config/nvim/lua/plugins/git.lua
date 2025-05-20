@@ -41,17 +41,15 @@ return {
         -- Actions
         local wk = require("which-key")
         wk.add({
-          { "<leader>g", group = "git", icon = "" },
+          -- { "<leader>g", group = "git", icon = "" },
           { "<leader>gd", gitsigns.diffthis, desc = "Diff this" },
           { "<leader>gr", gitsigns.reset_hunk, desc = "Reset hunk" },
           { "<leader>gR", gitsigns.reset_buffer, desc = "Reset buffer" },
-          { "<leader>gs", gitsigns.stage_hunk, desc = "Stage hunk" },
+          { "<leader>gs", gitsigns.stage_hunk, desc = "Stage/Unstage hunk" },
           { "<leader>gS", gitsigns.stage_buffer, desc = "Stage buffer" },
           { "<leader>gp", gitsigns.preview_hunk, desc = "Preview hunk" },
-          { "<leader>gu", gitsigns.undo_stage_hunk, desc = "Undo stage hunk" },
-          { "<leader>t", group = "toggles" },
           { "<leader>tb", gitsigns.toggle_current_line_blame, desc = "Current Line Blame" },
-          { "<leader>td", gitsigns.toggle_deleted, desc = "Deleted" },
+          { "<leader>td", gitsigns.preview_hunk_inline, desc = "Deleted" },
         })
       end,
     },

@@ -1,31 +1,33 @@
 return {
-  "williamboman/mason.nvim",
-  dependencies = {
-    "williamboman/mason-lspconfig.nvim",
-  },
+  "mason-org/mason.nvim",
   config = function()
     require("mason").setup()
-
-    local servers = require("lsp_settings.servers")
+    local servers = {
+      -- lua
+      "lua-language-server",
+      -- markdown
+      "marksman",
+      -- python
+      "basedpyright",
+      "ruff",
+      -- rust
+      "bacon-ls",
+    }
     local linters = {
       -- lua
       "luacheck",
-      --markdown
+      -- markdown
       "write-good",
       "markdownlint",
+      -- rust
+      "bacon",
     }
-
     local formatters = {
-      -- python
-      "ruff",
       -- lua
       "stylua",
-      -- shell
-      "shfmt",
       -- general
       "codespell",
     }
-
     local debuggers = {
       --python
       "debugpy",
@@ -33,12 +35,6 @@ return {
       "codelldb",
     }
 
-    -- install language servers
-    require("mason-lspconfig").setup({
-      ensure_installed = servers,
-    })
-
-    -- install everything else
     local function merge(...)
       local result = {}
       -- For each source table
@@ -51,7 +47,7 @@ return {
       return result
     end
 
-    local ensure_installed = merge(linters, formatters, debuggers)
+    local ensure_installed = merge(servers, linters, formatters, debuggers)
 
     vim.api.nvim_create_user_command("MasonInstallAll", function()
       vim.cmd("MasonInstall " .. table.concat(ensure_installed, " "))

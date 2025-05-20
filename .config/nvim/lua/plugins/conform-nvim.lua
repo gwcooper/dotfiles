@@ -21,6 +21,7 @@ return {
       python = { "ruff_format", "ruff_fix" },
       sh = { "shfmt" },
       markdown = { "markdownlint" },
+      rust = { "rustfmt", lsp_format = "fallback" },
       ["*"] = { "codespell" },
       ["_"] = { "trim_whitespace" },
     },
