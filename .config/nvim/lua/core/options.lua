@@ -1,5 +1,7 @@
 local opt = vim.opt
 
+vim.g.loaded_python3_provider = "Users/george/.pyenv/versions/neovim/bin/python"
+
 vim.g.have_nerd_font = true
 
 -- nvim-tree config - disable netrw
@@ -10,7 +12,7 @@ vim.g.loaded_netrwPlugin = 1
 opt.hlsearch = true
 opt.ignorecase = true
 opt.smartcase = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- cursor line
 opt.cursorline = false
@@ -23,20 +25,16 @@ opt.showmode = false
 opt.signcolumn = "yes"
 opt.number = true
 opt.relativenumber = true
-opt.inccommand = 'split'
+opt.inccommand = "split"
+opt.winborder = "rounded"
 
 -- editor behaviour
 opt.backspace = "indent,eol,start"
 opt.clipboard = "unnamedplus"
 opt.undofile = true
 opt.conceallevel = 1
-opt.mouse = 'a'
+opt.mouse = "a"
 opt.breakindent = true
-
--- fold
-opt.foldenable = false
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- spelling
 opt.spell = true
