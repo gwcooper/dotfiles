@@ -4,7 +4,6 @@ return {
   cmd = { "ConformInfo" },
   keys = {
     {
-      -- Customize or remove this keymap to your liking
       "<leader>lf",
       function()
         require("conform").format({ async = true, lsp_fallback = true })
@@ -13,9 +12,7 @@ return {
       desc = "Format buffer",
     },
   },
-  -- Everything in opts will be passed to setup()
   opts = {
-    -- Define your formatters
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "ruff_format", "ruff_fix" },

@@ -9,7 +9,7 @@ return {
     vim.o.timeoutlen = 300
   end,
   opts = {
-    defaults = {
+    spec = {
       { "]", group = "next" },
       { "[", group = "prev" },
       --     { "g", group = "goto" },
@@ -27,9 +27,4 @@ return {
       { "<leader>N", group = "Neovim", icon = "" },
     },
   },
-  config = function(_, opts)
-    local wk = require("which-key")
-    wk.setup(opts)
-    wk.add(opts.defaults)
-  end,
 }
