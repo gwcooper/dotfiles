@@ -164,3 +164,21 @@ vim.api.nvim_create_autocmd("FileType", {
     end)
   end,
 })
+
+-- treesitter highlights
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local filetype = args.match
+    local parser_name = vim.treesitter.language.get_lang(filetype)
+
+    if not parser_name then
+      return
+    end
+
+    if not pcall(vim.treesitter.get_parser, args.buf, parser_name) then
+      return
+    end
+
+    vim.treesitter.start()
+  end,
+})
