@@ -14,10 +14,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     --TODO: .buf might need to be .bufnr?
     lsp_keymaps(args.buf)
-    require("lsp_signature").on_attach({
-      bind = true,
-      handler_opts = { border = "rounded" },
-    }, args.buf) --TODO: The border arg may be irrelevant now
 
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if client == nil then
@@ -38,6 +34,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client.server_capabilities.documentSymbolProvider then
       require("nvim-navic").attach(client, args.buf)
     end
+
+    -- require("lsp_signature").on_attach({
+    --   bind = true,
+    -- }, args.buf) --TODO: The border arg may be irrelevant now
   end,
 })
 
@@ -48,11 +48,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, {
   -- snippet completion
   textDocument = { completion = { completionItem = { snippetSupport = true } } },
-  -- ufo folds
-  foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true,
-  },
 })
 
 -- Default configuration, applies to all LSPs
