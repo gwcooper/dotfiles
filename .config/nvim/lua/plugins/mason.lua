@@ -12,6 +12,8 @@ return {
       "ruff",
       -- rust
       "bacon-ls",
+      -- typst
+      "tinymist",
     }
     local linters = {
       -- lua

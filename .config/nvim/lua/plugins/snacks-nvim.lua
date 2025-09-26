@@ -25,6 +25,7 @@ return {
     indent = { enabled = true },
     input = { enabled = true },
     scope = { enabled = true },
+    statuscolumn = { enabled = true },
     zen = { enabled = true, toggles = { dim = true, statuscolumn = false, line_number = false } },
   },
   -- stylua: ignore

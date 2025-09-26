@@ -64,8 +64,7 @@ return {
         { "<leader>dPc", function() require('dap-python').test_class() end,  desc = "Debug Class",  ft = "python" },
       },
       config = function()
-        local path = vim.fn.exepath("debugpy")
-        require("dap-python").setup(path .. "/venv/bin/python")
+        require("dap-python").setup("uv")
         require("dap").configurations.python[1].justMyCode = false
       end,
     },

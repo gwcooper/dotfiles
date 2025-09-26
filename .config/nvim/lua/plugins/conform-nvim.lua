@@ -19,6 +19,7 @@ return {
       sh = { "shfmt" },
       markdown = { "markdownlint" },
       rust = { "rustfmt", lsp_format = "fallback" },
+      typst = { "typstyle", lsp_format = "fallback" },
       ["*"] = { "codespell" },
       ["_"] = { "trim_whitespace" },
     },
