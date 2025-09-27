@@ -3,7 +3,6 @@ return {
   opts = {}, -- for default options, refer to the configuration section for custom setup.
   cmd = "Trouble",
   keys = {
-    -- { "<leader>x", group = "Trouble" },
     {
       "<leader>xx",
       "<cmd>Trouble diagnostics toggle focus=true<cr>",

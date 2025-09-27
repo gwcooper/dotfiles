@@ -1,8 +1,3 @@
--- Go to Config
-vim.api.nvim_create_user_command("Config", function()
-  vim.cmd([[cd ~/.config/nvim]])
-end, {})
-
 -- Highlight on Yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 

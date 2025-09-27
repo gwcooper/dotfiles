@@ -29,6 +29,8 @@ return {
       "stylua",
       -- general
       "codespell",
+      -- typst
+      "typstyle",
     }
     local debuggers = {
       --python

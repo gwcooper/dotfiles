@@ -12,7 +12,6 @@ end
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
-    --TODO: .buf might need to be .bufnr?
     lsp_keymaps(args.buf)
 
     local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -26,24 +25,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
       end, { desc = "Inlay [H]ints" })
     end
-
-    if client:supports_method("textDocument/completion") then
-      vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-    end
-
-    if client.server_capabilities.documentSymbolProvider then
-      require("nvim-navic").attach(client, args.buf)
-    end
-
-    -- require("lsp_signature").on_attach({
-    --   bind = true,
-    -- }, args.buf) --TODO: The border arg may be irrelevant now
   end,
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
--- TODO: integrate blink
 
 capabilities = vim.tbl_deep_extend("force", capabilities, {
   -- snippet completion
