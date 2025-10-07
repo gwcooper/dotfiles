@@ -7,6 +7,7 @@ return {
       lua = { "luacheck" },
       markdown = { "write_good", "markdownlint" },
       typescript = { "ts-standard" },
+      typst = {"write_good"}
     },
   },
   config = function(_, opts)
