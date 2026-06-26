@@ -1,7 +1,7 @@
 return {
-  cmd = {'lua-language-server'},
-  filetypes = {'lua'},
-  root_markers = {'.luarc.json', '.luarc,jsonc', '.stylua.toml'},
+  cmd = { "lua-language-server" },
+  filetypes = { "lua" },
+  root_markers = { ".luarc.json", ".luarc,jsonc", ".stylua.toml" },
   single_file_support = true,
   log_level = vim.lsp.protocol.MessageType.Warning,
   settings = {
@@ -10,7 +10,14 @@ return {
         enable = false, -- let the linter do this
       },
       diagnostics = {
-        global = { "vim", "Snacks", "snacks.Config" },
+        global = {
+          "debuggerList",
+          "formatByFt",
+          "lintByFt",
+          "serverList",
+          "treeSitterInstallList",
+          "vim",
+        },
       },
     },
   },

@@ -3,7 +3,14 @@
         "missing-fields"
     ],
     "diagnostics.globals": [
-        "Snacks",
-        "snacks"
+        "vim",
+        "debuggerList",
+        "formatByFt",
+        "lintByFt",
+        "serverList",
+        "treeSitterInstallList",
+        "testAdapterList",
+        "completionProviders",
+        "completionSources"
     ]
 }
